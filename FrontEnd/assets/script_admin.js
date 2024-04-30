@@ -288,4 +288,44 @@ async function importImages() {
   boutonFilterHotels.addEventListener("click", async function () {
     getFilterCategory("Hotels & restaurants");
   });
-}
+      /* Gestion d'erreurs */
+      if (!imageForm || !titleForm || !categoryForm) {
+        alert("Veuillez remplir tous les champs du formulaire.");
+        return;
+      }
+    
+      const formData = new FormData();
+      formData.append("image", imageForm);
+      formData.append("title", titleForm);
+      formData.append("category", categoryForm);
+    
+      await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData
+      })
+        .then((response) => {
+          console.log(response);
+          if (!response.ok) {
+            throw new Error("Network error");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          modalLoad();
+          modalPrevious()
+        })
+        .catch((error) => {
+          console.error("problem with the fetch operation:", error);
+        });
+    }
+    
+    
+    document.getElementById("my-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      createWork();
+    });
+  
