@@ -92,3 +92,108 @@ async function importImages() {
       closeModal(e);
     }
   });
+  
+  /*Call API dans la Modale*/
+  async function modalLoad() {
+    const response = await fetch("http://localhost:5678/api/works");
+    const data = await response.json();
+  
+    const targetWrapper = document.querySelector(".img-load-container");
+  
+    targetWrapper.innerHTML = "";
+  
+    for (const image of data) {
+      /*Ajout d'image dans la data*/
+      const div = document.createElement("div");
+      div.classList.add("work-item");
+      const img = document.createElement("img");
+      const title = document.createElement("p");
+      const trashButton = document.createElement("button");
+      trashButton.classList.add("deleted-work");
+      trashButton.dataset.id =
+        image.id;
+      title.textContent = "éditer";
+      img.src = image.imageUrl;
+      img.crossOrigin = "anonymous";
+      trashButton.innerHTML = '<i class="fa-sharp fa-solid fa-trash"></i>';
+      div.appendChild(img);
+      div.appendChild(title);
+      div.appendChild(trashButton);
+      targetWrapper.appendChild(div);
+    } 
+    /* Suppression des images */
+    const deleteButtons =
+      document.querySelectorAll(
+        ".deleted-work"
+      );
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", async function (e) {
+        e.preventDefault();
+        let workId =
+          button.dataset
+            .id;
+        const token = localStorage.getItem("jwtToken");
+        await fetch(`http://localhost:5678/api/works/${workId}`, {
+          method: "DELETE",
+          headers: {
+            accept: "*/*",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const deletedWorkDiv = button.closest(".work-item");
+        deletedWorkDiv.remove();
+      });
+    }); 
+  }
+  
+  async function importWorks() {
+    const response = await fetch("http://localhost:5678/api/works");
+    const data = await response.json();
+    return data;
+  }
+  
+    for (const image of result) {
+      /*Création de l'image via la data*/
+      const div = document.createElement("div");
+      const img = document.createElement("img");
+      const title = document.createElement("p");
+      title.textContent = image.title;
+      img.src = image.imageUrl;
+      img.alt = image.title;
+      img.crossOrigin = "anonymous";
+      div.appendChild(img);
+      div.appendChild(title);
+      gallery.appendChild(div);
+    }
+  /* Modale Creation de travaux */
+  async function creatingWork() {
+    const loadContainer = document.querySelector(".img-load-container");
+    const deleteGallery = document.querySelector(".delete-gallery");
+    const previousModal = document.querySelector(".back");
+    const workForm = document.querySelector("#my-form");
+    const titleModal = document.querySelector("#titlemodal");
+    const contentBottom = document.querySelector(".bottom-content");
+    const hiddenContent = document.querySelector(".hide-content");
+    const hiddenTxt = document.querySelector(".image-text");
+    const hiddenFormat = document.querySelector(".image-format");
+  
+    hiddenContent.style.display = "flex";
+    hiddenTxt.style.display = "flex";
+    hiddenFormat.style.display = "flex";
+    contentBottom.style.display = "none";
+    previousModal.style.display = "block";
+    loadContainer.style.display = "none";
+    titleModal.innerHTML = "Ajout photo";
+    deleteGallery.style.display = "none";
+    workForm.style.display = "flex";
+  }
+    const targetAddWork = document.querySelector(".add-photo");
+    targetAddWork.addEventListener("click", creatingWork);
+  
+  
+  async function createWork() {
+    const token = localStorage.getItem("jwtToken");
+    const imageForm = document.getElementById("image").files[0];
+    const titleForm = document.getElementById("title").value;
+    const categoryForm = document.getElementById("category").value;
+  }
