@@ -10,6 +10,7 @@ async function importImages() {
       title.textContent = image.title;
       img.src = image.imageUrl; 
       img.alt = image.title; 
+      img.crossOrigin = "anonymous"; 
       div.appendChild(img); 
       div.appendChild(title);
       gallery.appendChild(div);
@@ -152,6 +153,13 @@ async function importImages() {
     return data;
   }
   
+  /* Définition de l'id(catégorie) associée à la nouvelle image */
+  async function getFilterCategory(category) {
+    const gallery = document.querySelector(".gallery");
+    gallery.innerHTML = "";
+    const data = await importWorks();
+    let result = data.filter((item) => item.category.name === category); 
+  
     for (const image of result) {
       /*Création de l'image via la data*/
       const div = document.createElement("div");
@@ -165,6 +173,7 @@ async function importImages() {
       div.appendChild(title);
       gallery.appendChild(div);
     }
+  }
   /* Modale Creation de travaux */
   async function creatingWork() {
     const loadContainer = document.querySelector(".img-load-container");
@@ -190,6 +199,29 @@ async function importImages() {
     const targetAddWork = document.querySelector(".add-photo");
     targetAddWork.addEventListener("click", creatingWork);
   
+  /* fleche back */
+  async function modalPrevious() {
+    const loadContainer = document.querySelector(".img-load-container");
+    const deleteGallery = document.querySelector(".delete-gallery");
+    const previousModal = document.querySelector(".back");
+    const workForm = document.querySelector("#my-form");
+    const titleModal = document.querySelector("#titlemodal");
+    const contentBottom = document.querySelector(".bottom-content");
+    const uploadedImg = document.querySelector("#uploadedimage");
+    
+    contentBottom.style.display = "flex";
+    previousModal.style.display = "none";
+    loadContainer.style.display = "flex";
+    titleModal.innerHTML = "Galerie photo";
+    deleteGallery.style.display = "block";
+    uploadedImg.innerHTML = "";
+    uploadedImg.style.width = "0px";
+    uploadedImg.style.height = "0px";
+    workForm.style.display = "none";
+    workForm.reset();
+  }
+  const targetPrevious = document.querySelector(".back");
+  targetPrevious.addEventListener("click", modalPrevious);
   
   async function createWork() {
     const token = localStorage.getItem("jwtToken");
