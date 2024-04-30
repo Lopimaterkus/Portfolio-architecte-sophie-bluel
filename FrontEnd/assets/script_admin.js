@@ -228,4 +228,35 @@ async function importImages() {
     const imageForm = document.getElementById("image").files[0];
     const titleForm = document.getElementById("title").value;
     const categoryForm = document.getElementById("category").value;
+  /* afficher l'image sélectionnée */
+  const uploadedImageDiv = document.querySelector("#uploadedimage");
+  const fileUpload = document.querySelector("#image");
+  const sendWork = document.querySelector("#valid-photo");
+  const hiddenContent = document.querySelector(".hide-content");
+  const hiddenTxt = document.querySelector(".image-text");
+  const hiddenFormat = document.querySelector(".image-format");
+  
+  fileUpload.addEventListener("change", getImage);
+  
+  function getImage(e) {
+    hiddenContent.style.display = "none";
+    hiddenTxt.style.display = "none";
+    hiddenFormat.style.display = "none";
+    sendWork.style.backgroundColor = "#1D6154";
+    console.log(e.target.files[0]);
+    console.log("images", e.target.files[0]);
+    const imageToProcess = e.target.files[0];
+  
+    let newImg = new Image(imageToProcess.width, imageToProcess.height);
+    newImg.src = URL.createObjectURL(imageToProcess);
+    uploadedImageDiv.style.width = "130px";
+    uploadedImageDiv.style.height = "169px";
+    uploadedImageDiv.appendChild(newImg);
+  }
+  
+  function logout() {
+    localStorage.removeItem("jwtToken");
+  }
+  targetLogout = document.querySelector("#btn-link-logout");
+  targetLogout.addEventListener("click", logout);
   }
