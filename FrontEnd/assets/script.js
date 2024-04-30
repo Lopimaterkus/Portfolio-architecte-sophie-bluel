@@ -5,19 +5,7 @@ async function importImages() {
     const data = await response.json(); 
     const gallery = document.querySelector(".gallery");
   
-    for (const image of data) {
-      /*Création dans le html pour chaque image dans la data*/
-      const div = document.createElement ("div");
-      const img = document.createElement("img");
-      const title = document.createElement("p");
-      title.textContent = image.title;
-      img.src = image.imageUrl;
-      img.alt = image.title;
-      img.crossOrigin = "anonymous";
-      div.appendChild(img);
-      div.appendChild(title);
-      gallery.appendChild(div);
-    }
+
   }
   
   importImages(); 

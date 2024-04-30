@@ -332,3 +332,272 @@ header{
 	text-align: center;
 	color: black;
 }
+
+/* style modale */
+
+#titlemodal{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+	color: #000000;
+}
+
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	animation: fadeIn 300ms both;
+}
+
+.modal-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow:hidden;
+	width: 630px;
+	height: 731px;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 70px;
+	padding-right: 70px;
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+.img-load-container{
+	display: flex;
+	width: 390px;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-self: center;
+	gap: 25px;
+}
+
+.img-load-container div {
+	position: relative;
+}
+
+.img-load-container img {
+	height: 105px;
+}
+
+.img-load-container button {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 10px;
+	font-size: 10px;
+	top: 5px;
+	right: 5px;
+	background-color: #000000;
+	color: #FFFFFF;
+	border-radius: 2px;
+}
+	.img-load-container button:hover {
+	cursor: pointer;
+}
+
+.js-modal{
+	text-decoration: none;
+}
+
+.js-modal-close{
+	align-self: flex-end;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 19px;
+	line-height: 19px;
+	text-align: center;
+	color: black;
+	border-style: none;
+	background-color: white;
+}
+
+.bottom-content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.add-photo{
+	width: 237px;
+	height: 36px;
+	background: #1D6154;
+	border-radius: 60px;
+	border: none;
+	color: white;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 17px;
+	margin-bottom: 20px;
+}
+	.add-photo:hover{
+		cursor: pointer;
+		scale: 1.2 ;
+	}
+
+.delete-gallery{
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+	color: #D65353;
+}
+	.delete-gallery{
+		cursor: pointer;
+	}
+
+.gray-line{
+	width: 420px;
+	height: 0px;
+	border: 1px solid #B3B3B3;
+	margin-bottom: 40px;
+}
+
+/* formulaire d'ajout photo */
+
+#my-form{
+	display: none; /* se modifie en JS */
+	flex-direction: column;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-nav{
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.modal-previous{
+	font-size: 21px;
+	line-height: 19px;
+	text-align: center;
+	color: black;
+	border-style: none;
+	background-color: white;
+}
+
+#valid-photo{
+	width: 237px;
+	height: 36px;
+	background: #A7A7A7;
+	border-radius: 60px;
+	border: none;
+	color: white;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 17px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.sky-bg{
+	width: 420px;
+	height: 169px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #E8F1F7;
+	border-radius: 3px;
+}
+
+#image{
+	width: 173px;
+	height: 36px;
+	background: #CBD6DC;
+	border-radius: 50px;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+
+	color: #306685;
+}
+
+#title,#category{
+	width: 420px;
+	height: 51px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);	
+	border: none;
+}
+
+
+.form-text{
+	align-self: flex-start;
+	margin-left: 35px;
+}
+
+.img-icon{
+	margin: 10px;
+	font-size: 60px;
+	color: #B9C5CC;
+
+}
+.image-text{
+	width: 173px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #CBD6DC;
+	border-radius: 50px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	cursor: pointer;
+
+	color: #306685;
+}
+
+.image-format{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #444444;
+	margin-top: 5px;
+}
+
+#uploadedimage img{
+	width: 130px;
+	height: 169px;
+}
+
+input[type="file"] {
+	display: none;
+  }

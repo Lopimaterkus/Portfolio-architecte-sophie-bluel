@@ -18,6 +18,34 @@ async function importImages() {
   }
   
   importImages();
+  /*Update de la liste sur appui des boutons de filtres*/
+  const boutonFilterTous =
+    document.querySelector("#tous"); 
+  const boutonFilterObjet =
+    document.querySelector("#objets"); 
+  const boutonFilterAppartements =
+    document.querySelector("#appartements"); 
+  const boutonFilterHotels =
+    document.querySelector(
+      "#hotels"
+    ); 
+  boutonFilterTous.addEventListener("click", async function () {
+    const gallery = document.querySelector(".gallery"); 
+    gallery.innerHTML = ""; 
+    importImages(); 
+  });
+  
+  boutonFilterObjet.addEventListener("click", async function () {
+    getFilterCategory("Objets");
+  });
+  
+  boutonFilterAppartements.addEventListener("click", async function () {
+    getFilterCategory("Appartements");
+  });
+  
+  boutonFilterHotels.addEventListener("click", async function () {
+    getFilterCategory("Hotels & restaurants");
+  });
   
   /* Modale */
   
@@ -228,6 +256,48 @@ async function importImages() {
     const imageForm = document.getElementById("image").files[0];
     const titleForm = document.getElementById("title").value;
     const categoryForm = document.getElementById("category").value;
+    /* Gestion d'erreurs */
+    if (!imageForm || !titleForm || !categoryForm) {
+      alert("Veuillez remplir tous les champs du formulaire.");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("image", imageForm);
+    formData.append("title", titleForm);
+    formData.append("category", categoryForm);
+  
+    await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData
+    })
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Network error");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        modalLoad();
+        modalPrevious()
+      })
+      .catch((error) => {
+        console.error("problem with the fetch operation:", error);
+      });
+  }
+  
+  
+  document.getElementById("my-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    createWork();
+  });
+  
+  
   /* afficher l'image sélectionnée */
   const uploadedImageDiv = document.querySelector("#uploadedimage");
   const fileUpload = document.querySelector("#image");
@@ -260,74 +330,6 @@ async function importImages() {
   targetLogout = document.querySelector("#btn-link-logout");
   targetLogout.addEventListener("click", logout);
   
-  /*Update de la liste sur appui des boutons de filtres*/
-  const boutonFilterTous =
-    document.querySelector("#tous"); 
-  const boutonFilterObjet =
-    document.querySelector("#objets"); 
-  const boutonFilterAppartements =
-    document.querySelector("#appartements"); 
-  const boutonFilterHotels =
-    document.querySelector(
-      "#hotels"
-    ); 
-  boutonFilterTous.addEventListener("click", async function () {
-    const gallery = document.querySelector(".gallery"); 
-    gallery.innerHTML = ""; 
-    importImages(); 
-  });
-  
-  boutonFilterObjet.addEventListener("click", async function () {
-    getFilterCategory("Objets");
-  });
-  
-  boutonFilterAppartements.addEventListener("click", async function () {
-    getFilterCategory("Appartements");
-  });
-  
-  boutonFilterHotels.addEventListener("click", async function () {
-    getFilterCategory("Hotels & restaurants");
-  });
-      /* Gestion d'erreurs */
-      if (!imageForm || !titleForm || !categoryForm) {
-        alert("Veuillez remplir tous les champs du formulaire.");
-        return;
-      }
-    
-      const formData = new FormData();
-      formData.append("image", imageForm);
-      formData.append("title", titleForm);
-      formData.append("category", categoryForm);
-    
-      await fetch("http://localhost:5678/api/works", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData
-      })
-        .then((response) => {
-          console.log(response);
-          if (!response.ok) {
-            throw new Error("Network error");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          modalLoad();
-          modalPrevious()
-        })
-        .catch((error) => {
-          console.error("problem with the fetch operation:", error);
-        });
-    }
-    
-    
-    document.getElementById("my-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      createWork();
-    });
   /* Vérifie si l'utilisateur a un token dans le local storage*/
   function checkAccess() {
     const token = localStorage.getItem("jwtToken");
