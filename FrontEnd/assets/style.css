@@ -186,3 +186,149 @@ footer nav ul {
 	margin: 2em
 }
 
+.container-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 5%;
+}
+
+.btn-projets {
+	box-sizing: border-box;
+	padding: 12px;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	background-color: white;
+	margin-top: 2%;
+	line-height: 19px;
+	text-align: center;
+}
+
+	.btn-projets:hover {
+		background-color: #1D6154;
+		color:white;
+		cursor:pointer
+	}
+
+	.btn-projets.active {
+		background-color: #1D6154;
+		color:white;
+		cursor:pointer
+	}
+
+#password-reset {
+	text-decoration: underline black;
+}
+
+#login-section{
+	font-weight: 600;
+}
+
+#btn-link{
+	text-decoration: none;
+	color: black;
+}
+
+#btn-link-logout{
+	text-decoration: none;
+	color: black;
+}
+
+#top-container{
+	position: absolute;
+	width: 100vw;
+	top: 0;
+	right: 0;
+	height: 59px;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+	color: #FFFFFF;
+	gap: 10px;
+}
+
+#top-icon{
+	color: white;
+	background-color: #000000;
+}
+
+header{
+	margin-top: 80px;
+}
+
+.btn-public{
+	height: 38px;
+	background: #FFFFFF;
+	border-radius: 60px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+}
+
+.ad-modifier{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.modifier-kit-top{
+	display: flex;
+	gap: 5px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.modifier-kit-mid{
+	display: flex;
+	gap: 5px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	margin: auto;
+	width: 80%;
+}
+
+.modifier-kit-bot{
+	display: flex;
+	margin-top: 5px;
+	gap: 5px;
+	flex-direction: row;
+	align-self: flex-start;
+	justify-content: center;
+	color: black;
+}
+
+.title-and-mod{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.ad-modifier-page{
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+	text-align: center;
+	color: black;
+}
