@@ -259,7 +259,7 @@ async function importImages() {
   }
   targetLogout = document.querySelector("#btn-link-logout");
   targetLogout.addEventListener("click", logout);
-
+  
   /*Update de la liste sur appui des boutons de filtres*/
   const boutonFilterTous =
     document.querySelector("#tous"); 
@@ -328,4 +328,32 @@ async function importImages() {
       event.preventDefault();
       createWork();
     });
+  /* Vérifie si l'utilisateur a un token dans le local storage*/
+  function checkAccess() {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) {
+      /* Si non -> page de connexion */
+      window.location.href = 'index.html';
+      alert("Vous n'avez pas accès à la page d'administration");
+    }
+  }
   
+  /* Vérifie l'accès à l'index_admin lors du chargement de la page */
+  if (window.location.href.endsWith('index_admin.html')) {
+    checkAccess();
+  }
+  
+  /* Activation des boutons de catégories */
+  const buttons = document.querySelectorAll('.btn-projets');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      button.classList.add('active');
+      
+      buttons.forEach(otherButton => {
+        if (otherButton !== button) {
+          otherButton.classList.remove('active');
+        }
+      });
+    });
+  });
