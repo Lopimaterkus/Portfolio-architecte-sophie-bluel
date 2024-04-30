@@ -18,7 +18,7 @@ async function importImages() {
   }
   
   importImages();
- 
+  
   /* Modale */
   
   let modal = null;
@@ -259,4 +259,33 @@ async function importImages() {
   }
   targetLogout = document.querySelector("#btn-link-logout");
   targetLogout.addEventListener("click", logout);
-  }
+
+  /*Update de la liste sur appui des boutons de filtres*/
+  const boutonFilterTous =
+    document.querySelector("#tous"); 
+  const boutonFilterObjet =
+    document.querySelector("#objets"); 
+  const boutonFilterAppartements =
+    document.querySelector("#appartements"); 
+  const boutonFilterHotels =
+    document.querySelector(
+      "#hotels"
+    ); 
+  boutonFilterTous.addEventListener("click", async function () {
+    const gallery = document.querySelector(".gallery"); 
+    gallery.innerHTML = ""; 
+    importImages(); 
+  });
+  
+  boutonFilterObjet.addEventListener("click", async function () {
+    getFilterCategory("Objets");
+  });
+  
+  boutonFilterAppartements.addEventListener("click", async function () {
+    getFilterCategory("Appartements");
+  });
+  
+  boutonFilterHotels.addEventListener("click", async function () {
+    getFilterCategory("Hotels & restaurants");
+  });
+}
