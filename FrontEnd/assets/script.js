@@ -5,8 +5,20 @@ async function importImages() {
     const data = await response.json(); 
     const gallery = document.querySelector(".gallery");
   
-
+    for (const image of data) {
+      /*Définition état par défaut + Tous*/
+      const div = document.createElement ("div");
+      const img = document.createElement("img");
+      const title = document.createElement("p");
+      title.textContent = image.title;
+      img.src = image.imageUrl;
+      img.alt = image.title;
+      img.crossOrigin = "anonymous";
+      div.appendChild(img);
+      div.appendChild(title);
+      gallery.appendChild(div);
   }
+}
   
   importImages(); 
   
@@ -90,6 +102,29 @@ async function importImages() {
           gallery.appendChild(div);
         }
     })
+    /*Définition de Tous*/
+    boutonFilterHotels.addEventListener("click",async function () {
+      const gallery = document.querySelector(".gallery");
+      gallery.innerHTML="";
+      const response = await fetch("http://localhost:5678/api/works");
+      const data = await response.json();
+      let result = data.filter(item => item.category.name === "Hotels & restaurants" || item.category.name === "Appartements" || item.category.name === "Objets");
+
+
+      for (const image of result) {
+        /*Gestion du filtre pour Tous*/
+        const div = document.createElement ("div");
+        const img = document.createElement("img"); 
+        const title = document.createElement("p");
+        title.textContent = image.title;
+        img.src = image.imageUrl;
+        img.alt = image.title;
+        img.crossOrigin = "anonymous";
+        div.appendChild(img);
+        div.appendChild(title);
+        gallery.appendChild(div);
+      }
+  })
   
   /* Activation des filtres fonctionnels */
   const buttons = document.querySelectorAll('.btn-projets');
