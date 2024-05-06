@@ -35,7 +35,7 @@ async function importImages() {
         importImages(); 
     })
       
-    /*Définition d'Objets*/
+    /*Définition d'Objets + Filtre*/
     boutonFilterObjet.addEventListener("click",async function () { 
         const gallery = document.querySelector(".gallery");  
         gallery.innerHTML=""; 
@@ -44,7 +44,6 @@ async function importImages() {
         let result = data.filter(item => item.category.name === "Objets"); 
   
         for (const image of result) {
-          /*Gestion du filtre pour Objets*/
           const div = document.createElement ("div");
           const img = document.createElement("img"); 
           const title = document.createElement("p");
@@ -58,7 +57,7 @@ async function importImages() {
         }
     })
   
-    /*Définition d'Appartements*/
+    /*Définition d'Appartements + Filtre*/
     boutonFilterAppartements.addEventListener("click",async function () {
         const gallery = document.querySelector(".gallery");
         gallery.innerHTML="";
@@ -67,7 +66,6 @@ async function importImages() {
         let result = data.filter(item => item.category.name === "Appartements");
   
         for (const image of result) {
-          /*Gestion du filtre pour Appartements*/
           const div = document.createElement ("div");
           const img = document.createElement("img"); 
           const title = document.createElement("p");
@@ -80,7 +78,7 @@ async function importImages() {
           gallery.appendChild(div);
         }
     })
-    /*Définition d'Hotels&Restaus*/
+    /*Définition d'Hotels&Restaus + Filtre*/
     boutonFilterHotels.addEventListener("click",async function () {
         const gallery = document.querySelector(".gallery");
         gallery.innerHTML="";
@@ -89,7 +87,6 @@ async function importImages() {
         let result = data.filter(item => item.category.name === "Hotels & restaurants");
   
         for (const image of result) {
-          /*Gestion du filtre pour Hotels&Restaus*/
           const div = document.createElement ("div");
           const img = document.createElement("img"); 
           const title = document.createElement("p");
@@ -102,7 +99,7 @@ async function importImages() {
           gallery.appendChild(div);
         }
     })
-    /*Définition de Tous*/
+    /*Définition de Tous + Filtre*/
     boutonFilterHotels.addEventListener("click",async function () {
       const gallery = document.querySelector(".gallery");
       gallery.innerHTML="";
@@ -112,7 +109,6 @@ async function importImages() {
 
 
       for (const image of result) {
-        /*Gestion du filtre pour Tous*/
         const div = document.createElement ("div");
         const img = document.createElement("img"); 
         const title = document.createElement("p");
