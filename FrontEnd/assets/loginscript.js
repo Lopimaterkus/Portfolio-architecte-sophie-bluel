@@ -18,7 +18,7 @@
             throw new Error("Une erreur est survenue");
           })
           .then(data => {
-            localStorage.setItem('jwtToken',data.token);
+            localStorage.setItem('Token',data.token);
             console.log(data);
             window.location.href = "index_admin.html";
           })

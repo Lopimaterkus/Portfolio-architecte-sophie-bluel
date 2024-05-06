@@ -161,7 +161,7 @@ async function importImages() {
         let workId =
           button.dataset
             .id;
-        const token = localStorage.getItem("jwtToken");
+        const token = localStorage.getItem("Token");
         await fetch(`http://localhost:5678/api/works/${workId}`, {
           method: "DELETE",
           headers: {
@@ -252,7 +252,7 @@ async function importImages() {
   targetPrevious.addEventListener("click", modalPrevious);
   
   async function createWork() {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("Token");
     const imageForm = document.getElementById("image").files[0];
     const titleForm = document.getElementById("title").value;
     const categoryForm = document.getElementById("category").value;
@@ -325,14 +325,14 @@ async function importImages() {
   }
   
   function logout() {
-    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("Token");
   }
   targetLogout = document.querySelector("#btn-link-logout");
   targetLogout.addEventListener("click", logout);
   
   /* Vérifie si l'utilisateur a un token dans le local storage*/
   function checkAccess() {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("Token");
     if (!token) {
       /* Si non -> page de connexion */
       window.location.href = 'index.html';
