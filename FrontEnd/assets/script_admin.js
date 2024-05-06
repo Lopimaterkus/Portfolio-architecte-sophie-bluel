@@ -3,7 +3,6 @@ async function importImages() {
     const gallery = document.querySelector(".gallery");
   
     for (const image of data) {
-      /*Création d'image en accord avec l'API*/
       const div = document.createElement("div");
       const img = document.createElement("img"); 
       const title = document.createElement("p");
@@ -19,16 +18,10 @@ async function importImages() {
   
   importImages();
   /*Update de la liste sur appui des boutons de filtres*/
-  const boutonFilterTous =
-    document.querySelector("#tous"); 
-  const boutonFilterObjet =
-    document.querySelector("#objets"); 
-  const boutonFilterAppartements =
-    document.querySelector("#appartements"); 
-  const boutonFilterHotels =
-    document.querySelector(
-      "#hotels"
-    ); 
+  const boutonFilterTous = document.querySelector("#tous"); 
+  const boutonFilterObjet = document.querySelector("#objets"); 
+  const boutonFilterAppartements = document.querySelector("#appartements"); 
+  const boutonFilterHotels = document.querySelector("#hotels"); 
   boutonFilterTous.addEventListener("click", async function () {
     const gallery = document.querySelector(".gallery"); 
     gallery.innerHTML = ""; 
@@ -132,7 +125,7 @@ async function importImages() {
     targetWrapper.innerHTML = "";
   
     for (const image of data) {
-      /*Ajout d'image dans la data*/
+      /*Ajout des éléments dans le html par image*/
       const div = document.createElement("div");
       div.classList.add("work-item");
       const img = document.createElement("img");
@@ -140,8 +133,7 @@ async function importImages() {
       const trashButton = document.createElement("button");
       trashButton.classList.add("deleted-work");
       trashButton.dataset.id =
-        image.id;
-      title.textContent = "éditer";
+      image.id;
       img.src = image.imageUrl;
       img.crossOrigin = "anonymous";
       trashButton.innerHTML = '<i class="fa-sharp fa-solid fa-trash"></i>';
@@ -175,13 +167,13 @@ async function importImages() {
     }); 
   }
   
+  /*Update en temps réel (call API)*/
   async function importWorks() {
     const response = await fetch("http://localhost:5678/api/works");
     const data = await response.json();
     return data;
   }
   
-  /* Définition de l'id(catégorie) associée à la nouvelle image */
   async function getFilterCategory(category) {
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
@@ -189,7 +181,6 @@ async function importImages() {
     let result = data.filter((item) => item.category.name === category); 
   
     for (const image of result) {
-      /*Création de l'image via la data*/
       const div = document.createElement("div");
       const img = document.createElement("img");
       const title = document.createElement("p");
@@ -227,7 +218,7 @@ async function importImages() {
     const targetAddWork = document.querySelector(".add-photo");
     targetAddWork.addEventListener("click", creatingWork);
   
-  /* fleche back */
+  /* Fleche back */
   async function modalPrevious() {
     const loadContainer = document.querySelector(".img-load-container");
     const deleteGallery = document.querySelector(".delete-gallery");
