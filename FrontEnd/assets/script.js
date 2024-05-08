@@ -45,7 +45,9 @@ async function checkAccess() {
       const logoutclass = document.getElementById('logout');
       logoutclass.classList.add('hide');
       
-      
+      const top_container = document.getElementById('top-container')
+      top_container.classList.add('hide')
+
       const modifier_etlogo = document.getElementById('modifier_etlogo');
       modifier_etlogo.classList.add('hide');
       modifier_etlogo.classList.remove('modifier-kit-bot');

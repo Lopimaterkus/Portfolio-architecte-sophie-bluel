@@ -47,6 +47,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -209,11 +210,6 @@ footer nav ul {
 	line-height: 19px;
 	text-align: center;
 }
-.hide {
-	display: none;
-	line-height: 0px;
-	font-size: 0px;
-}
 
 	.btn-projets:hover {
 		background-color: #1D6154;
@@ -245,7 +241,7 @@ footer nav ul {
 	color: black;
 }
 
-#top-container{
+.top-container{
 	position: absolute;
 	width: 100vw;
 	top: 0;
@@ -289,7 +285,7 @@ header{
 	font-size: 16px;
 	line-height: 19px;
 	text-align: center;
-	color: black;
+	color: white;
 }
 
 .modifier-kit-top{
@@ -611,3 +607,8 @@ header{
 input[type="file"] {
 	display: none;
   }
+  .hide {
+	display: none;
+	line-height: 0px;
+	font-size: 0px;
+}
