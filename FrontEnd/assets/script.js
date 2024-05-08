@@ -425,6 +425,22 @@ async function checkAccess() {
     uploadedImageDiv.style.height = "169px";
     uploadedImageDiv.appendChild(newImg);
   }
+  async function createDynamicSelect() {
+    const select = document.getElementById('category');
+
+    const dataFromAPI = await getDataFromAPI();
+
+    if (dataFromAPI) {
+        dataFromAPI.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            select.appendChild(option);
+        });
+    }
+}
+
+window.onload = createDynamicSelect;
   
     function logout() {
       localStorage.removeItem("Token");
