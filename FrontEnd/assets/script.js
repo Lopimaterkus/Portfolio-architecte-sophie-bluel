@@ -29,7 +29,7 @@ async function importImages() {
 }
 }
 
-importImages(); 
+importImages();
 
 async function checkAccess() {
   const token = localStorage.getItem("Token");
@@ -44,7 +44,8 @@ async function checkAccess() {
       
       const logoutclass = document.getElementById('logout');
       logoutclass.classList.add('hide');
-
+      
+      
       const modifier_etlogo = document.getElementById('modifier_etlogo');
       modifier_etlogo.classList.add('hide');
       modifier_etlogo.classList.remove('modifier-kit-bot');
@@ -150,7 +151,8 @@ async function checkAccess() {
   } else {
     const loginclass = document.getElementById('login');
       loginclass.classList.add('hide');
-    /* Modale */
+
+      /* Modale */
   
   let modal = null;
   
@@ -206,6 +208,10 @@ async function checkAccess() {
       .querySelector(".js-modal-stop")
       .removeEventListener("click", closeModal);
     modal = null;
+
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = '';
+    importImages();
   };
   
   const stopPropagation = function (e) {
@@ -441,7 +447,7 @@ async function checkAccess() {
 }
 
 window.onload = createDynamicSelect;
-  
+
     function logout() {
       localStorage.removeItem("Token");
     }
