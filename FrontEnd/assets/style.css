@@ -569,6 +569,11 @@ header{
 	color: #B9C5CC;
 
 }
+.modal-nav button {
+	background-color: white;
+	border: none;
+	font-size: large;
+}
 .image-text{
 	width: 173px;
 	height: 36px;
