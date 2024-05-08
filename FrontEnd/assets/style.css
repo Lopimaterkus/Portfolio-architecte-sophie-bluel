@@ -209,6 +209,11 @@ footer nav ul {
 	line-height: 19px;
 	text-align: center;
 }
+.hide {
+	display: none;
+	line-height: 0px;
+	font-size: 0px;
+}
 
 	.btn-projets:hover {
 		background-color: #1D6154;
@@ -284,7 +289,7 @@ header{
 	font-size: 16px;
 	line-height: 19px;
 	text-align: center;
-	color: #FFFFFF;
+	color: black;
 }
 
 .modifier-kit-top{

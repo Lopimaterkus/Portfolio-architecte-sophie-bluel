@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/5420a2db7e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -17,7 +18,8 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a id="btn-link" href="./Login.html">login</a></li>
+			<li id="login"><a id="btn-link" href="./Login.html">login</a></li>
+			<li id="logout"><a id="btn-link-logout" href="./index.html">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,15 +37,53 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div class="container-btns">
-			<button id ="tous" class="btn-projets">Tous</button>
-			<button id ="objets" class="btn-projets">Objets</button>
-			<button id ="appartements" class="btn-projets">Appartements</button>
-			<button id = "hotels" class="btn-projets">Hôtels & restaurants</button>
+		<div class="title-and-mod">
+			<h2>Mes Projets</h2>
+			<div id="modifier_etlogo" class="modifier-kit-bot"><i class="fa-sharp fa-solid fa-pen-to-square"></i><a href="#modal1"
+				class="js-modal"><span class="ad-modifier-page"> modifier </span></a></div>
 		</div>
-		<div class="gallery"> 
+		<aside id="modal1" class="modal" aria-hidden="true" role="modal" aria-labelledby="titlemodal"
+			style="display:none">
+			<div class="modal-wrapper js-modal-stop">
+				<div class="modal-nav">
+				<button class="close">X</button>
+				<button class="back"><i class="fa-sharp fa-solid fa-arrow-left"></i></button>
+				</div>
+					<h2 id="titlemodal">Galerie photo</h2>
+					<div class="img-load-container">
+					</div>
+					<form id="my-form">
+					<div class="sky-bg">
+						<div class="img-icon hide-content">
+							<i class="fa-solid fa-image"></i>	
+						</div>						
+						<input type="file" name="image" id="image" accept="image/*">
+						<div id ="uploadedimage"></div>
+						<label for="image" class="image-text" >+ Ajouter photo</label>
+						<p class="image-format">jpg, png : 4mo max</p>
+					</div>
+						<label for="title" class="form-text">Titre</label>
+						<input type="text" name="title" id="title">
+
+						<label for="category" class="form-text">Catégorie</label>
+						<select name="category" id="category">
+
+						</select>
+						<div class="gray-line"></div>
+						<input id="valid-photo" type="submit" value="Valider">
+					</form>
+					<div class="bottom-content">
+						<div class="gray-line"></div>
+						<button class="add-photo">Ajouter une photo</button>
+						<p class="delete-gallery"></p>
+					</div>
+				</div>	
+			</aside>
+		<div id="container-btns" class="container-btns">
 			
+		</div>
+		<div class="gallery">
+
 		</div>
 	</section>
 	<section id="contact">
@@ -68,6 +108,6 @@
 		</ul>
 	</nav>
 </footer>
-<script src="./assets/script.js"></script>
+<script src="./assets/script.js" defer></script>
 </body>
 </html>
